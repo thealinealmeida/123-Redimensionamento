@@ -53,6 +53,30 @@ function gotPoses(results) {
         sqr.x = results[0].pose.nose.x;
         sqr.y = results[0].pose.nose.y;
 
+        //pulsoDireita
+        const pulsoD = {};
+        pulsoD.x = results[0].pose.rightWrist.x;
+        pulsoD.y = results[0].pose.rightWrist.y;
+        //console.log(pulsoD);
+
+        //pulsoEsquerda
+        const pulsoE = {};
+        pulsoE.x = results[0].pose.leftWrist.x;
+        pulsoE.y = results[0].pose.leftWrist.y;
+        //console.log(pulsoE);
+
+        //aumentar e diminuir de acordo com a distancia dos pulsos
+        const pulsoX = Math.abs(pulsoD.x - pulsoE.x);
+        const pulsoY = Math.abs(pulsoD.y - pulsoE.y);
+
+
+        if (pulsoX > pulsoY) {
+            sqr.s = pulsoX;
+        } else {
+            sqr.s = pulsoY;
+        }
+
+
 
     }
 
